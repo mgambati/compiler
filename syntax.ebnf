@@ -1,15 +1,13 @@
 G = ( {Z,I,D,L,X,K,O,S,E,R,T}, {var, : , id, , , integer, real, ; , :=, if, then,+}, P, Z)
 
-Z -> I S
-I -> var D
-D -> L : K O
-L -> id X
-X -> , L | ε
-K -> integer | real
-O -> ; D | ε
- -> id := E | if E then S
-E -> T R
-R -> + T R | ε
-T -> id
-
-
+Z ::= I S
+I ::= 'var' D
+D ::= L ':' K O
+L ::= 'id' X
+X ::= (',' L)?
+K ::= 'integer' | 'real'
+O ::= ( ';' D )?
+S ::= ( 'id' ':=' E | 'if' E 'then' S )
+E ::= T R
+R ::= ( '+' T R )?
+T ::= 'id'
