@@ -4,7 +4,7 @@ import dev.mgambati.lexer.Token
 import dev.mgambati.lexer.TokenType
 
 
-class Parser(private val tokens: List<Token>) {
+class Parser(tokens: List<Token>) {
     private val matcher = Matcher(tokens)
     fun parse() {
         z()
@@ -59,7 +59,7 @@ class Parser(private val tokens: List<Token>) {
     }
 
     private fun l() {
-        val matched = matcher.match(TokenType.IDENTIFIER)
+        matcher.match(TokenType.IDENTIFIER)
         x()
     }
 
