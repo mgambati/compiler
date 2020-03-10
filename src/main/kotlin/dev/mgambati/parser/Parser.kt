@@ -27,7 +27,8 @@ class Parser(tokens: List<Token>) {
         val matched = matcher.matchOneOf(TokenType.IDENTIFIER, TokenType.KEYWORD_IF)
 
         if (matched of TokenType.IDENTIFIER) {
-            symbolTable.lookup(matched.value) ?: throw UndefinedVariableException(matched)
+            symbolTable.lookup(matched.value) as Variable? ?: throw UndefinedVariableException(matched)
+
             symbolTable.addToStaging(matched)
             matcher.match(TokenType.OPERATOR_ASSIGNMENT)
             e()

@@ -1,6 +1,7 @@
 package dev.mgambati.lexer
 
 import dev.mgambati.lexer.exceptions.LexicalException
+import java.io.FileInputStream
 import java.util.*
 
 class Lexer {
@@ -30,7 +31,7 @@ class Lexer {
         }
     }
 
-    fun tokenize(source: String): List<Token> {
+    fun tokenize(source: FileInputStream): List<Token> {
         val scanner = Scanner(source)
         currentLine = 1
 
