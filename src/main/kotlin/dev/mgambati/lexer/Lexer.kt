@@ -27,7 +27,8 @@ class Lexer {
                     matcher.start()
                 )
 
-            matchedTokens.add(token)
+            if (!token.type.isAComment())
+                matchedTokens.add(token)
         }
     }
 

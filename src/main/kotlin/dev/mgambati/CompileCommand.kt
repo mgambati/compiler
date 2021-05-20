@@ -24,6 +24,8 @@ class CompileCommand : Runnable {
             val parser = Parser(tokens)
             parser.parse()
 
+            parser.printSymbolsTable()
+
             println("Nenhum erro sintático detectado.")
 
         } catch (e: Exception) {

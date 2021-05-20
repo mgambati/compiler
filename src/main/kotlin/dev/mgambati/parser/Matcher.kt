@@ -15,6 +15,22 @@ class Matcher(private val tokens: List<Token>) {
         return token
     }
 
+
+    fun previewOptionally(type: TokenType): Token? {
+        val matched = matchOptionally(type)
+
+        if (matched != null) previous()
+
+        return matched
+    }
+
+    fun previewOneOfOptionally(vararg type: TokenType): Token? {
+        val matched = matchOneOfOptionally(*type)
+        if (matched != null) previous()
+
+        return matched
+    }
+
     fun matchOptionally(type: TokenType): Token? {
         return try {
             match(type)
@@ -45,6 +61,7 @@ class Matcher(private val tokens: List<Token>) {
             previous()
             null
         } catch (e: EarlyExitSyntaxException) {
+            previous()
             null
         }
     }
